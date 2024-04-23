@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ChatApp | Login</title>
+</head>
+
+<body>
+    <div class="container m-5 p-5 w-1/4 mx-auto flex flex-col justify-center items-center shadow-xl rounded-lg">
+        <h1 class="text-3xl font-bold">
+            Login
+        </h1>
+        <form action="/chat" method="get" class="container mx-auto flex flex-col justify-center items-center">
+            <label class="form-control w-full max-w-xs py-5">
+                <div class="label">
+                    <span class="label-text">Enter your name?</span>
+                </div>
+                <input id="name" name="name" type="text" placeholder="Type here" autocomplete="off" required
+                    class="input input-bordered w-full max-w-xs" />
+            </label>
+            <input class="btn btn-primary w-full max-w-xs" type="submit" onclick="login()" value="Submit" />
+        </form>
+    </div>
+    <script>
+        // Add event listener to the form submission
+        document.querySelector('form').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the name from the input field
+            const nameInput = document.getElementById('name');
+            const name = nameInput.value.trim();
+
+            // Check if the name is not empty
+            if (name.length > 0) {
+                // Store the name in the local storage
+                localStorage.setItem('name', name);
+
+                // Submit the form
+                event.target.submit();
+            } else {
+                alert('Please enter your name.');
+            }
+        });
+    </script>
+</body>
+
+</html>
